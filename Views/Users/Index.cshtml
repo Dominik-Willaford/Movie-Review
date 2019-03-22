@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MovieReviews.Models.User>
+
+@{
+    ViewBag.Title = "User Creatation";
+}
+
+<h2>Users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    <button onclick="myFunction()">Go back to home page</button>
+</div>
+<script>
+    function myFunction() {
+        window.location.href = "http://localhost:59063/Home/Index";
+    }
+</script>
+

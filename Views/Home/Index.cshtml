@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Groovy Movie</h1>
+    <p class="lead">Registered users will be able to look up movies to read reviews and add their own.</p>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Login", "Index", "Users")</h2>
+        <p>
+            You can create your user here to have your voice heard on movies.
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Movies", "Index", "Movies")</h2>
+        <p>Here you can search movies or add movies to our review system.</p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Reviews", "Index", "Reviews")</h2>
+        <p>Here you can easily find movies and their reviews or give your own review.</p>
+    </div>
+
+</div>
