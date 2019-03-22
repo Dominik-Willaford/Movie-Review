@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="MovieReviewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="Title" Nullable="false" MaxLength="100" Type="nvarchar" />
+    <Property Name="Director" Nullable="false" MaxLength="100" Type="nvarchar" />
+    <Property Name="Genre" Nullable="false" MaxLength="50" Type="nvarchar" />
+    <Property Name="Release" Type="date" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="ReviewID" />
+    </Key>
+    <Property Name="ReviewID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="UserId" Nullable="false" Type="int" />
+    <Property Name="MovieID" Nullable="false" Type="int" />
+    <Property Name="Reviews" MaxLength="150" Type="varchar" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="Username" Nullable="false" MaxLength="50" Type="nvarchar" />
+  </EntityType>
+  <Association Name="FK_Reviews_Movies">
+    <End Type="Self.Movies" Multiplicity="1" Role="Movies" />
+    <End Type="Self.Reviews" Multiplicity="*" Role="Reviews" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reviews_Users">
+    <End Type="Self.Users" Multiplicity="1" Role="Users" />
+    <End Type="Self.Reviews" Multiplicity="*" Role="Reviews" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MovieReviewModelStoreContainer">
+    <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Reviews_Movies" Association="Self.FK_Reviews_Movies">
+      <End EntitySet="Movies" Role="Movies" />
+      <End EntitySet="Reviews" Role="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reviews_Users" Association="Self.FK_Reviews_Users">
+      <End EntitySet="Users" Role="Users" />
+      <End EntitySet="Reviews" Role="Reviews" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

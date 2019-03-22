@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MovieReviewModelStoreContainer" CdmEntityContainer="MovieReviewEntities">
+    <EntitySetMapping Name="Movies">
+      <EntityTypeMapping TypeName="MovieReviewModel.Movy">
+        <MappingFragment StoreEntitySet="Movies">
+          <ScalarProperty Name="Release" ColumnName="Release" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Director" ColumnName="Director" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="MovieReviewModel.Review">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="Reviews" ColumnName="Reviews" />
+          <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MovieReviewModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
